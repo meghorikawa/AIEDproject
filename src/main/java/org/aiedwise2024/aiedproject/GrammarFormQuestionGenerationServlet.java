@@ -41,9 +41,9 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
     /**Set the parameters here */
     // grammar construct and num of questions
-    public static String PARAM_CONSTRUCT = "grammarconstruct";
+    public static String PARAM_CONSTRUCT = "grammar_construct";
     public static String PARAM_NUM_OF_QUESTIONS = "num_ques";
-    public static String PARAM_CEFR_LVL = "cefr_lvl"; //ideally pulled from contrsuct description
+    public static String PARAM_CEFR_LVL = "cefr_lvl"; //ideally pulled from construct description
 
 
     /**Override doGet method to send the prompt to GPT API for generation
@@ -59,7 +59,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         String par_level = req.getParameter(PARAM_CEFR_LVL);
 
         //handle cases for empty parameters or negative numbers
-        if (par_construct == null || par_num.isEmpty() || par_num <= 0 ) {
+        if (par_construct == null || par_num <= 0 ) {
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             //error message must be returned as json format
@@ -70,7 +70,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         if (par_num > 20) {
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
-            resp.getWriter.write("{\"error\": \"Too Many Questions: You can only generate 20 or less questions at a time.\"}");
+            resp.getWriter().write("{\"error\": \"Too Many Questions: You can only generate 20 or less questions at a time.\"}");
         }
 
 
@@ -105,9 +105,9 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
             //recieve generation and parse and send to front end
             resp.setContentType ("application/json");
-            resp.setChatacterEncoding("UTF-8");
+            resp.setCharacterEncoding("UTF-8");
             resp.getWriter().write(questions);
-        } catch (exception e) {
+        } catch (Exception e) {
            e.printStackTrace();
         }
 
