@@ -37,7 +37,9 @@ import static org.aiedwise2024.aiedproject.LMmessage.ROLE_USER;
 public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
     public static final String GROQ_SERVICE_PATH = "https://api.groq.com/openai/v1/chat/completions";
-    public static final String URL_PATH = "/ChatGPT/questions/generation";
+    public static final String URL_PATH = "/question/generation";
+    //Get API Key that was set as environmental variable
+    String groqAPIkey = System.getenv("GROQ_API_KEY");
 
     /**Set the parameters here */
     // grammar construct and num of questions
@@ -77,9 +79,6 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         try {
             //add the prompt builder here which will assemble the prompt
             String prompt = constructPrompt(par_construct, par_level , par_num);
-
-            //Get API Key that was set as environmental variable
-            String groqAPIkey = System.getenv("GROQ_API_KEY");
 
             //New request body to assemble the request
             RequestBody body = new RequestBody();
@@ -129,6 +128,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST"); // post request
         connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Authorization", "Bearer " + groqAPIkey);
         connection.setDoOutput(true);
 
         try (OutputStream os = connection.getOutputStream()) {
