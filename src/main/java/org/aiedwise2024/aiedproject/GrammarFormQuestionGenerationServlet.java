@@ -32,7 +32,7 @@ import static org.aiedwise2024.aiedproject.LMmessage.ROLE_USER;
         urlPatterns = GrammarFormQuestionGenerationServlet.URL_PATH
 )
 /*Set who can access - both students and teachers should be able to access this feature*/
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"USER_ACTIVATED", "TEACHER_ACTIVATED", "ADMIN"}))
+//@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"USER_ACTIVATED", "TEACHER_ACTIVATED", "ADMIN"}))
 
 public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
