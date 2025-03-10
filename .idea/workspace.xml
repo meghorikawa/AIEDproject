@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="updated pom to JDK17">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="update README.md">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741557485275</updated>
-      <workItem from="1741557487042" duration="10277000" />
+      <workItem from="1741557487042" duration="10592000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -138,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741611254847</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update README.md">
+      <option name="closed" value="true" />
+      <created>1741612511093</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1741612511093</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +157,7 @@
     <MESSAGE value="adding Dockerfile" />
     <MESSAGE value="docker-compose.yml" />
     <MESSAGE value="updated pom to JDK17" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated pom to JDK17" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
 </project>

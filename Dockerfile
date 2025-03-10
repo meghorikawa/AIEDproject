@@ -9,5 +9,3 @@ COPY target/AIEDproject-1.0-SNAPSHOT.war /var/lib/jetty/webapps/ROOT.war
 
 #Expose port 8080(default jetty port)
 EXPOSE 8080
-
-#CMD ["java", "-jar", "/usr/local/jetty/start.jar"]
