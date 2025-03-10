@@ -31,7 +31,7 @@ mvn clean package
 ```
 from here you will then redeploy the container as given in the instructions above.
 
-##Making API Calls to test if Servlet is Deployed
+## Making API Calls to test if Servlet is Deployed
 
 By changing the parameters given in the url below you can test the api calls through the servlet.
 
