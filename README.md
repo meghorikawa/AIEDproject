@@ -4,8 +4,6 @@ Our final project for winter '24 seminar of Education system design with AI.
 ## Running the Servlet Locally
 To run the servlet locally you will need your own docker-compose.yml file in the main directory of the project. **To protect your API key this file should be added to the .gitignore file of your repository**. The structure of  **docker-compose.yml** file should look like this. 
 ```yaml
-version: "3.8"
-
 services:
   aiedproject:
     container_name: aied-container
