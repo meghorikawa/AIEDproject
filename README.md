@@ -32,3 +32,11 @@ If changes have been made to the code in the project you will need to recompile 
 mvn clean package
 ```
 from here you will then redeploy the container as given in the instructions above.
+
+##Making API Calls to test if Servlet is Deployed
+
+By changing the parameters given in the url below you can test the api calls through the servlet.
+
+```yaml
+http://localhost:8080/question/generation?grammar_construct=past-tense&num_ques=5&cefr_lvl=A2
+```
