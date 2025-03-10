@@ -3,7 +3,7 @@ version: "3.8"
 services:
   aiedproject:
     container_name: aied-container
-    image: aiedproject
+    build: .
     ports:
       - "8080:8080"
     environment:
