@@ -12,7 +12,7 @@ import java.util.List;
 public class RequestBody {
     String model = "llama-3.3-70b-versatile";
     double temp = 0.0; //higher temperature introduces more randomness ares usese 0.0
-    String responseFormat = "json_object";
+    String responseFormat = "{ \"type\": \"json_object\" }";
 
     List<LMmessage> messages; // list of messages to include to model
 

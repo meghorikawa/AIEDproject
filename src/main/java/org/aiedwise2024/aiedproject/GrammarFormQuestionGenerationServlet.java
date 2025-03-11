@@ -136,6 +136,8 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         connection.setRequestProperty("Authorization", "Bearer " + groqAPIkey);
         connection.setDoOutput(true);
 
+        System.out.println("Sending request to Groq API");
+
         try (OutputStream os = connection.getOutputStream()) {
             byte[] bytes = requestBodyJson.getBytes("UTF-8"); //convert to bytes to send over HTTP
             os.write(bytes, 0, bytes.length); // this sends the byte array to the API
@@ -148,6 +150,8 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         Scanner scanner = new Scanner(responseStream, "UTF-8");
         String response = scanner.useDelimiter("\\A").next(); // convert byte stream into string
         scanner.close();
+
+        System.out.println("Groq API response: " + response);
 
         // anything besides 200 means an error occured
         if (responseCode != 200) {
