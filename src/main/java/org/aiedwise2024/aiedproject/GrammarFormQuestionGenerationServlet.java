@@ -100,6 +100,9 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             //convert to JSON
             String requestBodyJson = new Gson().toJson(body);
 
+            //log body format for debuggin
+            System.out.println("Request body:" + body);
+
             //finally send prompt too Groq
             String questions = sendRequestReturnRawResponse(requestBodyJson);
 
@@ -144,10 +147,10 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         connection.setRequestMethod("POST"); // post request
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestProperty("Authorization", "Bearer " + groqAPIkey);
-        connection.setDoOutput(true);
 
         System.out.println("Sending request to Groq API");
 
+        connection.setDoOutput(true);
         try (OutputStream os = connection.getOutputStream()) {
             byte[] bytes = requestBodyJson.getBytes("UTF-8"); //convert to bytes to send over HTTP
             os.write(bytes, 0, bytes.length); // this sends the byte array to the API
