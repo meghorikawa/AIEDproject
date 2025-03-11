@@ -1,0 +1,316 @@
+{
+    "constructions": [
+        {
+            "level": "A1",
+            "construction_number": 1,
+            "construction_name": "PAST SIMPLE FOR EVERYDAY EVENTS AND STATES",
+            "description": {
+                "rule": "Can use the past simple to talk about everyday events or states.",
+                "examples": [
+                    "The people were very polite.",
+                    "Every time I went to Hendon Park, I saw so many people there. "
+                ]
+            },
+            "tags": ["pasr simple", "A1"]
+        },
+        {
+            "level": "A1",
+            "construction_number": 2,
+            "construction_name": "MAIN CLAUSE WITH ANOTHER MAIN CLAUSE",
+            "description": {
+                "rule": "Can combine two main declarative clauses using co-ordinating conjunctions ('and', 'but', 'or').",
+                "examples": [
+                    "I like my college and I like my class.",
+                    "On Sunday I visit my friends, but I often stay at home and I read books.."
+                ]
+            },
+            "tags": ["clauses", "coordinated", "A1"]
+        },
+        {
+            "level": "A1",
+            "construction_number": 3,
+            "construction_name": "DETERMINERS WITH NOUNS",
+            "description": {
+                "rule": "Can use possessive determiners 'my', 'your', 'his', 'her' and 'our' before nouns and noun phrases and possessive pronouns",
+                "examples": [
+                    "I live with my family. My home is a flat.",
+                    "Our house has four rooms, one bathroom and one toilet."
+                ]
+            },
+            "tags": ["determiners", "nouns", "A1"]
+        },
+        {
+            "level": "A2",
+            "construction_number": 4,
+            "construction_name": "COMBINING TWO ADJECTIVES WITH 'BUT'",
+            "description": {
+                "rule": "Can use 'but' to join a limited range of common adjectives, after 'be'.",
+                "examples": [
+                    "The weather was cloudy but fine.",
+                    "It was cheap but beautiful."
+                ]
+            },
+            "tags": ["adjectives", "combining", "A2"]
+        },
+        {
+            "level": "A2",
+            "construction_number": 5,
+            "construction_name": "ADJECTIVES WITH 'THE MOST'",
+            "description": {
+                "rule": "Can form superlative adjective phrases using 'the most', with longer adjectives of two or more syllables.",
+                "examples": [
+                    "We love football competitions because here in Uruguay football is the most popular sport.",
+                    "The problem was that it was the most expensive mobile in the shop."
+                ]
+            },
+            "tags": ["adjectives", "superlatives", "A2"]
+        },
+        {
+            "level": "A2",
+            "construction_number": 6,
+            "construction_name": "ADVERBS AS MODIFIERS OF CERTAINTY",
+            "description": {
+                "rule": "Can use a limited range of adverbs ('maybe', 'perhaps') to indicate degrees of certainty.",
+                "examples": [
+                    "Or maybe we can walk to there, because it's not far from my house.",
+                    "Perhaps I left it in your living room. "
+                ]
+            },
+            "tags": ["adverbs", "A2"]
+        },
+        {
+            "level": "A2",
+            "construction_number": 7,
+            "construction_name": "PAST CONTINUOUS FOR DESCRIBTION OF BACKGROUND EVENTS",
+            "description": {
+                "rule": "Can use the past continuous to show that an event was happening in the background to the main event.",
+                "examples": [
+                    "Yesterday we were studying maths in your house, and I left my book on your bed. ",
+                    "It was raining when I arrived."
+                ]
+            },
+            "tags": ["past continuous", "A2"]
+        },
+        {
+            "level": "A2",
+            "construction_number": 8,
+            "construction_name": "Present continuous for events in process",
+            "description": {
+                "rule": "Can use the present continuous with an increasing range of verbs to talk about situations and events in progress.",
+                "examples": [
+                    "I am watching a swimming competition.",
+                    "It's June and it's getting warmer. "
+                ]
+            },
+            "tags": [ "A2"]
+        },
+        {
+            "level": "A2",
+            "construction_number": 9,
+            "construction_name": " Gerunds as nouns",
+            "description": {
+                "rule": "Can use the '-ing' forms of verbs as nouns, in object position, to refer to activities.",
+                "examples": [
+                    "There we did a lot of things like swimming from the beach and going shopping.",
+                    "I practised windsurfing and scuba diving. "
+                ]
+            },
+            "tags": ["nouns", "A2"]
+        },
+        {
+            "level": "B1",
+            "construction_number": 10,
+            "construction_name": "PRESENT CONTINUOUS FOR QUESTIONS ABOUT THE FUTURE",
+            "description": {
+                "rule": "Can use the present continuous with an increasing range of verbs to ask about future plans.",
+                "examples": [
+                    "Are you visiting my country on your next holiday?",
+                    "Why are you moving to a different area? "
+                ]
+            },
+            "tags": ["present continuous", "B1"]
+        },
+        {
+            "level": "B1",
+            "construction_number": 11,
+            "construction_name": "FINITE CLAUSE AFTER THAN ",
+            "description": {
+                "rule": "Can use 'than' + a finite clause forming the second part of a comparison after a comparative adjective",
+                "examples": [
+                    "I wish our schools could become better than they are.",
+                    "He is almost 60 years old, but he's faster than you can imagine."
+                ]
+            },
+            "tags": ["clauses","comparatives", "B1"]
+        },
+        {
+            "level": "B1",
+            "construction_number": 12,
+            "construction_name": " ADVERBS AS MODIFIERS OF TIME",
+            "description": {
+                "rule": "Can use an increasing range of adverbs to refer to the timing of an event.",
+                "examples": [
+                    "Dear Kate, I went to the cinema with a new friend recently. ",
+                    "Dear Kate, I went to the cinema with a new friend recently."
+                ]
+            },
+            "tags": ["adverbs as modifiers","adverbs", "B1"]
+        },
+        {
+            "level": "B1",
+            "construction_number": 13,
+            "construction_name": "PREPOSITION WITH NO ARTICLE",
+            "description": {
+                "rule": "Can use no article before an increasing range of nouns in some fixed expressions with prepositions.",
+                "examples": [
+                    "The weather is very cold at night. ",
+                    "This programme will be shown on television next Friday."
+                ]
+            },
+            "tags": ["articles","determiners", "B1"]
+        },
+        {
+            "level": "B1",
+            "construction_number": 14,
+            "construction_name": "IRREGULAR PLURAL NOUN WITH 'S'",
+            "description": {
+                "rule": "Can use ''s' after irregular plural nouns to indicate possession.",
+                "examples": [
+                    "When I go out with my friends, I actually like wearing clothes that attract people's attention. ",
+                    "The second reason is: it is too far from the children's school and, unfortunately, I haven't got a car. "
+                ]
+            },
+            "tags": ["possessives","determiners", "B1"]
+        },
+        {
+            "level": "B1",
+            "construction_number": 15,
+            "construction_name": "SUBORDINATE CLAUSE WITH CONJUNCTIONS",
+            "description": {
+                "rule": "Can use a finite subordinate clause with conjunctions ('even though, (al)though, while if') to introduce contrast, before or after a main clause.",
+                "examples": [
+                    "You should come with your sister even though you would rather be alone. ",
+                    "Although he was famous, I didn't like him."
+                ]
+            },
+            "tags": [ "B1"]
+        },
+        {
+            "level": "B2",
+            "construction_number": 16,
+            "construction_name": "Present continuous as a future form",
+            "description": {
+                "rule": "We often use the present continuous to talk about future events that are already planned and decided when a date and/or a place have been chosen.",
+                "examples": [
+                    "I’m seeing the dentist at 6.",
+                    "I’m flying to New York tomorrow morning."
+                ]
+            },
+            "tags": ["future", "B2"]
+        },
+        {
+            "level": "B2",
+            "construction_number": 17,
+            "construction_name": "Reported speech using a reporting clause",
+            "description": {
+                "rule": "Can report speech and thought directly using the reporting verb in the mid position of the reported clause.",
+                "examples": [
+                    "'No problem', I thought, 'there is only one person'.",
+                    "'Forgive me, sweetheart', he said, 'I will never leave you alone again.'"
+                ]
+            },
+            "tags": ["B2"]
+        },
+        {
+            "level": "B2",
+            "construction_number": 18,
+            "construction_name": "Verb 'will' in requests",
+            "description": {
+                "rule": "Can use 'will' (particularly 'Will you please') to make requests and commands in a wide range of contexts.",
+                "examples": [
+                    "Will you please send me his name, address and telephone number. ",
+                    "Will you pay attention!"
+                ]
+            },
+            "tags": [ "B2"]
+        },
+        {
+            "level": "B2",
+            "construction_number": 19,
+            "construction_name": "Future perfect continuous",
+            "description": {
+                "rule": "Can use the future perfect continuous to look back to the past from a point in the future and to emphasise the duration of an activity or event.",
+                "examples": [
+                    "Now I am staying in Hastings in England and this month, I will have been studying English for seven months. ",
+                    "I think I could have a holiday just in July because I will have been working for my company for one year by the end of the June."
+                ]
+            },
+            "tags": ["future","future perfect continuous", "B2"]
+        },
+        {
+            "level": "B2",
+            "construction_number": 20,
+            "construction_name": "Past perfect continuous results.",
+            "description": {
+                "rule": "Can use the past perfect continuous to talk about events which started before a time in the past and which finished, but where the effects or results were still important at a point in the past.",
+                "examples": [
+                    "Unfortunately it had been snowing for a long time and so I was unable to go out for a walk.",
+                    "We had been working very hard all the morning so by that time, I was very tired."
+                ]
+            },
+            "tags": ["past","past perfect continuous", "B2"]
+        },
+        {
+            "level": "B2",
+            "construction_number": 21,
+            "construction_name": "PAST SIMPLE QUESTIONS",
+            "description": {
+                "rule": "Can use 'yes/no', 'wh-', tag and negative question forms with an increasing range of verbs.",
+                "examples": [
+                    "Are you still looking for a job or did you succeed in finding one? ",
+                    "It was great to have met you, and we certainly had a terrific time together, didn't we?"
+                ]
+            },
+            "tags": ["pasr simple","past", "B2"]
+        },
+        {
+            "level": "C1",
+            "construction_number": 22,
+            "construction_name": "COMPOUND ADJECTIVES",
+            "description": {
+                "rule": "Can use a wide range of compound adjectives ('open-minded', 'above-mentioned', 'well-to-do', 'jaw-dropping')",
+                "examples": [
+                    "I would describe myself as an easy-going and open-minded person.",
+                    "But as she does not live in a well-to-do family, Ola was never able to afford additional private lessons, for example. ."
+                ]
+            },
+            "tags": [ "C1"]
+        },
+        {
+            "level": "C1",
+            "construction_number": 23,
+            "construction_name": "Verb 'can' with the passive",
+            "description": {
+                "rule": "Can use 'can' in passive reporting clauses in a more formal impersonal style (e.g. for reports and academic contexts), such as 'It can be said that'",
+                "examples": [
+                    "It can be argued, looking at the figures, that the company should consider withdrawing from the heater market. ",
+                    "Taking everything into account, it can be concluded that the current training course is very useful for our company. "
+                ]
+            },
+            "tags": ["passive","C1"]
+        },
+        {
+            "level": "C1",
+            "construction_number": 24,
+            "construction_name": "Passive form; non-finite clauses",
+            "description": {
+                "rule": "Can use a passive non-finite '-ing' form as a subordinate clause or a noun clause to give explanatory background information.",
+                "examples": [
+                    "Being born and raised in Mexico, I believe her to be this country's best representative to the world. ",
+                    "Being invited by your boss for an unexpected lunch makes you feel noticed."
+                ]
+            },
+            "tags": ["passive", "C1"]
+        }
+    ]
+}
