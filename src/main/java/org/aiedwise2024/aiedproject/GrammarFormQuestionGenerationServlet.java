@@ -103,10 +103,20 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             //finally send prompt too Groq
             String questions = sendRequestReturnRawResponse(requestBodyJson);
 
+            //for debugging purposes
+            System.out.println("Groq API Resp: " + questions);
+
             //recieve generation and parse and send to front end
             resp.setContentType ("application/json");
             resp.setCharacterEncoding("UTF-8");
+            //check response came back properly
+            if (questions == null || questions.isEmpty()) {
+                System.out.println("No response from Groq API or response is empty.");
+                resp.getWriter().write("{\"error\": \"No response from Groq API.\"}");
+            }else {
             resp.getWriter().write(questions);
+            }
+
         } catch (Exception e) {
            e.printStackTrace();
            resp.setContentType("application/json");
