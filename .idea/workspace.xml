@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="adding logger dependencies">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/RequestBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/RequestBodyData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -76,7 +77,7 @@
       <updated>1741557485275</updated>
       <workItem from="1741557487042" duration="11289000" />
       <workItem from="1741716336720" duration="941000" />
-      <workItem from="1741719921820" duration="8868000" />
+      <workItem from="1741719921820" duration="17939000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -246,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741773794362</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="adding logger dependencies">
+      <option name="closed" value="true" />
+      <created>1741774757811</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1741774757811</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

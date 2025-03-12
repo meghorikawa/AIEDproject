@@ -1,6 +1,5 @@
 package org.aiedwise2024.aiedproject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**This class handles the parameters to be sent to the model for prompting
@@ -9,7 +8,7 @@ import java.util.List;
  */
 
 
-public class RequestBody {
+public class RequestBodyData {
     String model = "llama-3.3-70b-versatile";
     double temp = 0.0; //higher temperature introduces more randomness ares usese 0.0
     String responseFormat = "{ \"type\": \"json_object\" }";
@@ -17,8 +16,8 @@ public class RequestBody {
     List<LMmessage> messages; // list of messages to include to model
 
     //constructor
-    public RequestBody() {
-        this.messages = new ArrayList<>();
+    public RequestBodyData(List<LMmessage> messages) {
+        this.messages = messages;
     }
 
     //getter and setter methods
