@@ -1,14 +1,13 @@
 package org.aiedwise2024.aiedproject;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.HttpConstraint;
-import jakarta.servlet.annotation.ServletSecurity;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -17,6 +16,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.google.gson.Gson; //google's JSON converter
+
+// import the loggers for easy debugging
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.aiedwise2024.aiedproject.LMmessage.ROLE_SYSTEM;
 import static org.aiedwise2024.aiedproject.LMmessage.ROLE_USER;
@@ -51,6 +54,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
     /**Override doGet method to send the prompt to GPT API for generation
      * req is the HTTP request sent by the user
      * resp is the HTTP response sent back to the user and receive response back
+     * groq requires a post request...
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -66,6 +70,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             resp.setCharacterEncoding("UTF-8");
             //error message must be returned as json format
             resp.getWriter().write("{\"error\": \"Missing parameters: Grammar Form and number of questions required.\"}");
+            return;
         }
 
         //also handle case for too many questions being generated at once?? up to 20 questions?
@@ -73,8 +78,8 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             resp.getWriter().write("{\"error\": \"Too Many Questions: You can only generate 20 or less questions at a time.\"}");
+            return;
         }
-
 
         try {
             //add the prompt builder here which will assemble the prompt
@@ -99,15 +104,31 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             //convert to JSON
             String requestBodyJson = new Gson().toJson(body);
 
+            //log body format for debuggin
+            System.out.println("Request body:" + body);
+
             //finally send prompt too Groq
             String questions = sendRequestReturnRawResponse(requestBodyJson);
+
+            //for debugging purposes
+            System.out.println("Groq API Resp: " + questions);
 
             //recieve generation and parse and send to front end
             resp.setContentType ("application/json");
             resp.setCharacterEncoding("UTF-8");
+            //check response came back properly
+            if (questions == null || questions.isEmpty()) {
+                System.out.println("No response from Groq API or response is empty.");
+                resp.getWriter().write("{\"error\": \"No response from Groq API.\"}");
+            }else {
             resp.getWriter().write(questions);
+            }
+
         } catch (Exception e) {
            e.printStackTrace();
+           resp.setContentType("application/json");
+           resp.setCharacterEncoding("UTF-8");
+           resp.getWriter().write("{\"error\": \"Internal server error\"}");
         }
 
     }
@@ -115,11 +136,12 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
     //method for constructing prompt
     private String constructPrompt(String construct, String level, int n){
         return "You are an EFL teacher who teaches English to non-native school students " +
-                "aged 10-18. Generate " + n +"grammar questions in a " +
-                "fill-in-the-blank format with a CEFR level of " + level + "on the topic " +
-                "of " + construct + ".Ensure that the questions provide students with opportunities " +
-                "to practice the topic from different perspectives and align with their level of knowledge. " +
-                "Your resonse should be in the following JSON format: { \"topic\" : \"TOPIC_HERE\", \"questions\" : [\"question\": \"QUESTION_HERE\", \"answer\" : \" ANSWER_HERE\"] }";
+                "aged 10-18. Generate " + n + " grammar questions in a fill-in-the-blank format " +
+                "with a CEFR level of " + level + " on the topic of " + construct +
+                ". Ensure that the questions provide students with opportunities to practice the topic " +
+                "from different perspectives and align with their level of knowledge. " +
+                "Your response should be in the following JSON format: { \"topic\": \"TOPIC_HERE\", " +
+                "\"questions\": [{\"question\": \"QUESTION_HERE\", \"answer\": \"ANSWER_HERE\"}] }";
     }
 
     // method for sending request to Groq and returning raw response
@@ -129,17 +151,24 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         connection.setRequestMethod("POST"); // post request
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestProperty("Authorization", "Bearer " + groqAPIkey);
-        connection.setDoOutput(true);
 
+        System.out.println("Sending request to Groq API");
+
+        connection.setDoOutput(true);
         try (OutputStream os = connection.getOutputStream()) {
             byte[] bytes = requestBodyJson.getBytes("UTF-8"); //convert to bytes to send over HTTP
             os.write(bytes, 0, bytes.length); // this sends the byte array to the API
         }
 
+        //reading the response
         int responseCode = connection.getResponseCode();
-        Scanner scanner = new Scanner(connection.getInputStream(), "UTF-8");
+        InputStream responseStream = (responseCode == 200) ? connection.getInputStream() : connection.getErrorStream();
+
+        Scanner scanner = new Scanner(responseStream, "UTF-8");
         String response = scanner.useDelimiter("\\A").next(); // convert byte stream into string
         scanner.close();
+
+        System.out.println("Groq API response: " + response);
 
         // anything besides 200 means an error occured
         if (responseCode != 200) {
