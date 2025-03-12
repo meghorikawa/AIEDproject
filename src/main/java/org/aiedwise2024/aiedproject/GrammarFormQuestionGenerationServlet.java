@@ -7,13 +7,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 import com.google.gson.Gson; //google's JSON converter
 
@@ -22,7 +19,6 @@ import okhttp3.*;
 
 
 // import the loggers for easy debugging
-import okhttp3.RequestBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +35,8 @@ import static org.aiedwise2024.aiedproject.LMmessage.ROLE_USER;
         description = "For generating questions via an LLM for students to practice grammatic form",
         urlPatterns = GrammarFormQuestionGenerationServlet.URL_PATH
 )
-/*Set who can access - both students and teachers should be able to access this feature*/
+/*Set who can access - both students and teachers should be able to access this feature
+* within ares, however this is a prototype so no security is implemented*/
 //@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"USER_ACTIVATED", "TEACHER_ACTIVATED", "ADMIN"}))
 
 public class GrammarFormQuestionGenerationServlet extends HttpServlet {
@@ -139,8 +136,6 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
     }
 
-    //
-
     //method for constructing prompt
     private String constructPrompt(String construct, String level, int n){
         return "You are an EFL teacher who teaches English to non-native school students " +
@@ -171,7 +166,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
                 .build();
 
 
-        logger.info("Sending request to Groq API. Remaining fallbacks: " + numFallback);
+        logger.info("Sending request to Groq API. Remaining fallbacks: {}", numFallback);
         logger.debug("Request body: " + requestBodyJson);
 
         //Send response
