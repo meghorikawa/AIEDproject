@@ -1,5 +1,5 @@
 # AIEDproject
-Our final project for winter '24 seminar of Education system design with AI. 
+Our final project for winter '24 seminar of Education system design with AI. We developed a servlet which could extend the ARES I-CALL system which uses an LLM to generate practice exercises for grammar forms students encounter in texts.  
 
 ## Running the Servlet Locally
 To run the servlet locally you will need your own docker-compose.yml file in the main directory of the project. **To protect your API key this file should be added to the .gitignore file of your repository**. The structure of  **docker-compose.yml** file should look like this. 
