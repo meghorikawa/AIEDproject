@@ -17,6 +17,10 @@ import java.util.Scanner;
 
 import com.google.gson.Gson; //google's JSON converter
 
+// import the loggers for easy debugging
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import static org.aiedwise2024.aiedproject.LMmessage.ROLE_SYSTEM;
 import static org.aiedwise2024.aiedproject.LMmessage.ROLE_USER;
 
