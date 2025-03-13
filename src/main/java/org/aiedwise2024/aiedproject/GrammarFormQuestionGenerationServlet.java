@@ -59,7 +59,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(GrammarFormQuestionGenerationServlet.class);
 
 
-    /**Override doGet method to send the prompt to GPT API for generation
+    /**Override doGet method to send the prompt to Groq API for generation
      * req is the HTTP request sent by the user
      * resp is the HTTP response sent back to the user and receive response back
      * groq requires a post request...

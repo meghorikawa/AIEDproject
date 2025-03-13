@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class RequestBodyData {
-    String model = "llama-3.3-70b-versatile";
+    String model = "deepseek-r1-distill-llama-70b";
     double temp = 0.0; //higher temperature introduces more randomness ares usese 0.0
     String responseFormat = "{ \"type\": \"json_object\" }";
 
