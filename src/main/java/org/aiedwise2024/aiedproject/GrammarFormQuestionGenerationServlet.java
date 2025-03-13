@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import okhttp3.*;
 
 
 // import the loggers for easy debugging
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,13 +61,13 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(GrammarFormQuestionGenerationServlet.class);
 
 
-    /**Override doGet method to send the prompt to Groq API for generation
+    /**Override doPost method to send the prompt to Groq API for generation
      * req is the HTTP request sent by the user
      * resp is the HTTP response sent back to the user and receive response back
-     * groq requires a post request...
+     * groq requires a post request instead of doGet which ares implements
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //double check there isn't an error with APIkey
         if (groqAPIkey == null || groqAPIkey.isEmpty()) {
@@ -74,12 +76,26 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             return;
         }
 
-        //parse request to receive parameters to include in prompt
-        String par_construct = req.getParameter(PARAM_CONSTRUCT);
-        String par_num = req.getParameter(PARAM_NUM_OF_QUESTIONS);
-        String par_level = req.getParameter(PARAM_CEFR_LVL);
+        //parse JSON input argument to get parameters
+        //first implement string builder
+        StringBuilder sb = new StringBuilder();
+        String line;
+        try (BufferedReader reader =req.getReader() ) {
+            while ((line = reader.readLine()) != null) {sb.append(line);}
+        }
 
-        logger.info("Received request: grammar_construct = {}, num_ques= {} Cefr_Level{}", par_construct, par_num, par_level);
+        //convert sb to string
+        String requestBody = sb.toString();
+
+        logger.debug("Received request: {}", requestBody);
+
+        //parse request to receive parameters to include in prompt
+        Gson gson = new Gson();
+        RequestParams params = gson.fromJson(requestBody,RequestParams.class);
+
+        String par_construct = params.getGrammarConstruct();
+        String par_num = params.getNumQuestions();
+        String par_level = params.getCefrLevel();
 
         //handle cases for empty parameters or negative numbers
         if (par_construct == null || par_num == null || par_level == null ) {
@@ -100,19 +116,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
         try {
             //add the prompt builder here which will assemble the prompt
-            String prompt = constructPrompt(par_construct, par_level , par_num);
-
-            //create list of messages to hold conversation messages i.e. system message, user message etc.
-            List<LMmessage> messages = new ArrayList<LMmessage>();
-            //System level instruction, role and content
-            LMmessage systemMsg = new LMmessage(ROLE_SYSTEM, "You are an EFL teacher who teaches English to non-native school students aged 10-18 ");
-            //User message - user role and prompt
-            LMmessage userMsg = new LMmessage(ROLE_USER, prompt);
-
-            messages.add(systemMsg);
-            messages.add(userMsg);
-            //New request body to assemble the request
-            RequestBodyData body = new RequestBodyData(messages);
+            RequestBodyData body = getRequestBodyData(par_construct, par_level, par_num);
 
             //convert to JSON
             String requestBodyJson = new Gson().toJson(body);
@@ -136,6 +140,23 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error1");
         }
 
+    }
+
+    @NotNull
+    private RequestBodyData getRequestBodyData(String par_construct, String par_level, String par_num) {
+        String prompt = constructPrompt(par_construct, par_level, par_num);
+
+        //create list of messages to hold conversation messages i.e. system message, user message etc.
+        List<LMmessage> messages = new ArrayList<LMmessage>();
+        //System level instruction, role and content
+        LMmessage systemMsg = new LMmessage(ROLE_SYSTEM, "You are an EFL teacher who teaches English to non-native school students aged 10-18 ");
+        //User message - user role and prompt
+        LMmessage userMsg = new LMmessage(ROLE_USER, prompt);
+
+        messages.add(systemMsg);
+        messages.add(userMsg);
+        //New request body to assemble the request
+        return new RequestBodyData(messages);
     }
 
     //method for constructing prompt
