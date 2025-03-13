@@ -48,7 +48,6 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
     //instance of OkHttpClient
     private static final OkHttpClient client = new OkHttpClient();
-    private static final Gson gson = new Gson();
 
     /**Set the parameters here */
     // grammar construct and num of questions
@@ -68,15 +67,22 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        //parse request to recevieve parameters to include in prompt
+        //double check there isn't an error with APIkey
+        if (groqAPIkey == null || groqAPIkey.isEmpty()) {
+            logger.error("GROQ API Key is missing. Set it as an environmental variable");
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Missing API Key");
+            return;
+        }
+
+        //parse request to receive parameters to include in prompt
         String par_construct = req.getParameter(PARAM_CONSTRUCT);
-        int par_num = Integer.parseInt(req.getParameter(PARAM_NUM_OF_QUESTIONS));
+        String par_num = req.getParameter(PARAM_NUM_OF_QUESTIONS);
         String par_level = req.getParameter(PARAM_CEFR_LVL);
 
-        logger.info("Received request: grammar_construct = "+ par_construct + ", num_ques= " + par_num + " Cefr_Level"  + par_level);
+        logger.info("Received request: grammar_construct = {}, num_ques= {} Cefr_Level{}", par_construct, par_num, par_level);
 
         //handle cases for empty parameters or negative numbers
-        if (par_construct == null || par_num <= 0 ) {
+        if (par_construct == null || par_num.isEmpty() ) {
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             //error message must be returned as json format
@@ -86,12 +92,9 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             return;
         }
         //also handle case for too many questions being generated at once?? limit to 20 questions?
-        if (par_num > 20) {
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            resp.getWriter().write("{\"error\": \"Too Many Questions: You can only generate 20 or less questions at a time.\"}");
-            ///  implement logger here to.
-            logger.error("Too many questions at a time.");
+        if (Integer.parseInt(par_num) > 20) {
+            logger.error("Too many questions requested at a time.");
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "You can only generate 20 or fewer questions at a time. ");
             return;
         }
 
@@ -130,14 +133,13 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
         } catch (Exception e) {
            logger.error("Error generating questions via Groq API", e);
-
-           resp.getWriter().write("{\"error\": \"Internal server error\"}");
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error1");
         }
 
     }
 
     //method for constructing prompt
-    private String constructPrompt(String construct, String level, int n){
+    private String constructPrompt(String construct, String level, String n){
         return "You are an EFL teacher who teaches English to non-native school students " +
                 "aged 10-18. Generate " + n + " grammar questions in a fill-in-the-blank format " +
                 "with a CEFR level of " + level + " on the topic of " + construct +
@@ -154,11 +156,9 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             logger.error("Fallbacks have been exhausted");
             return "{\"error\": \"Fallbacks have been exhausted - failed to fetch response from Groq API\"}";
         }
-        //convert to string
-        String jsonRequestBody = gson.toJson(requestBodyJson);
 
         //create OkHttp request body
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonRequestBody);
+        RequestBody requestBody = RequestBody.create(requestBodyJson, MediaType.get("application/json"));
         Request request = new Request.Builder()
                 .url(GROQ_SERVICE_PATH)
                 .header("Authorization","Bearer " + APIkey)
@@ -175,9 +175,10 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
                 resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to fetch data from Groq API");
                 return sendRequestReturnRawResponse(resp, groqAPIkey, requestBodyJson, numFallback -1, logger);
             }
+            assert response.body() != null;
             String model_response =response.body().string();
             //log response from LLM
-            logger.info("Groq API Resp: " + model_response);
+            logger.info("Groq API Resp: {}", model_response);
             return model_response;
         }
 
