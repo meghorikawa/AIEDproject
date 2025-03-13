@@ -27,16 +27,16 @@ import static org.aiedwise2024.aiedproject.LMmessage.ROLE_USER;
 
 /**
  * A servlet that handles question generation for students who
- * wish for more practice on a specific grammatic form by prompting ChatGPT
+ * wish for more practice on a specific grammatical form by prompting ChatGPT
  * */
 
 @WebServlet(
         name = "grammar form question generation servlet",
-        description = "For generating questions via an LLM for students to practice grammatic form",
+        description = "For generating questions via an LLM for students to practice grammatical form",
         urlPatterns = GrammarFormQuestionGenerationServlet.URL_PATH
 )
 /*Set who can access - both students and teachers should be able to access this feature
-* within ares, however this is a prototype so no security is implemented*/
+ * within ares, however this is a prototype so no security is implemented*/
 //@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"USER_ACTIVATED", "TEACHER_ACTIVATED", "ADMIN"}))
 
 public class GrammarFormQuestionGenerationServlet extends HttpServlet {
@@ -82,7 +82,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         logger.info("Received request: grammar_construct = {}, num_ques= {} Cefr_Level{}", par_construct, par_num, par_level);
 
         //handle cases for empty parameters or negative numbers
-        if (par_construct == null || par_num.isEmpty() ) {
+        if (par_construct == null || par_num == null || par_level == null ) {
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             //error message must be returned as json format
@@ -128,11 +128,11 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
                 logger.error("No response from Groq API or response is empty.");
                 resp.getWriter().write("{\"error\": \"No response from Groq API.\"}");
             }else {
-            resp.getWriter().write(questions);
+                resp.getWriter().write(questions);
             }
 
         } catch (Exception e) {
-           logger.error("Error generating questions via Groq API", e);
+            logger.error("Error generating questions via Groq API", e);
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Internal Server Error1");
         }
 
