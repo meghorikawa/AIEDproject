@@ -3,20 +3,20 @@
 
 <configuration>
     <!-- Console appender configuration -->
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
         </encoder>
     </appender>
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>logs/app.log</file>
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>${user.dir}/logs/app.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
         </encoder>
     </appender>
     <!-- Root logger configuration -->
-    <root level="info">
-        <appender-ref ref="console" />
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
         <appender-ref ref="file" />
     </root>
 </configuration>

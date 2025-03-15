@@ -147,7 +147,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         String prompt = constructPrompt(par_construct, par_level, par_num);
 
         //create list of messages to hold conversation messages i.e. system message, user message etc.
-        List<LMmessage> messages = new ArrayList<LMmessage>();
+        List<LMmessage> messages = new ArrayList<>();
         //System level instruction, role and content
         LMmessage systemMsg = new LMmessage(ROLE_SYSTEM, "You are an EFL teacher who teaches English to non-native school students aged 10-18 ");
         //User message - user role and prompt
@@ -188,7 +188,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
 
         logger.info("Sending request to Groq API. Remaining fallbacks: {}", numFallback);
-        logger.debug("Request body: " + requestBodyJson);
+        logger.debug("Request body: {}", requestBodyJson);
 
         //Send response
         try (Response response = client.newCall(request).execute()) {
