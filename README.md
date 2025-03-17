@@ -5,13 +5,18 @@ Our final project for winter '24 seminar of Education system design with AI. We 
 To run the servlet locally you will need your own docker-compose.yml file in the main directory of the project. **To protect your API key this file should be added to the .gitignore file of your repository**. The structure of  **docker-compose.yml** file should look like this. 
 ```yaml
 services:
-  aiedproject:
+  jetty:
+    image: aiedproject
     container_name: aied-container
     build: .
     ports:
       - "8080:8080"
+    volumes:
+      - ./target/AIEDproject-1.0-SNAPSHOT.war:/opt/jetty-base/webapps/ROOT.war
     environment:
       - GROQ_API_KEY=your api key here
+      - JETTY_PORT=8080
+  restart: unless-stopped
 ```
 
 to build and then deploy the container, navigate to the project directory in your terminal and run the following command:
@@ -25,7 +30,7 @@ docker-compose down
 ```
 
 ## Recompiling the project after changes
-If changes have been made to the code in the project you will need to recompile it by runnnig the following command in the main directory of the project: 
+If changes have been made to the code in the project you will need to recompile it by running the following command in the main directory of the project: 
 ```yaml
 mvn clean package
 ```

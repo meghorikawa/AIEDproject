@@ -46,7 +46,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
     public static final String GROQ_SERVICE_PATH = "https://api.groq.com/openai/v1/chat/completions";
     public static final String URL_PATH = "/question/generation";
     //Get API Key that was set as environmental variable
-    String groqAPIkey = System.getenv("GROQ_API_KEY");
+   String groqAPIkey = System.getenv("GROQ_API_KEY");
 
     //instance of OkHttpClient
     private static final OkHttpClient client = new OkHttpClient();
