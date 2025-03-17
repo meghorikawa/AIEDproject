@@ -16,6 +16,7 @@
     <maven.compiler.source>17</maven.compiler.source>
     <junit.version>5.11.0</junit.version>
       <jettyVersion>12.0.17</jettyVersion>
+      <slf4jVersion>2.0.7</slf4jVersion>
   </properties>
 
   <dependencies>
@@ -51,7 +52,7 @@
           <dependency>
               <groupId>org.slf4j</groupId>
               <artifactId>slf4j-api</artifactId>
-              <version>2.0.7</version>
+              <version>${slf4jVersion}</version>
           </dependency>
           <!-- Logback (SLF4J Implementation) -->
           <dependency>
@@ -60,14 +61,36 @@
               <version>1.4.12</version>
           </dependency>
       <dependency>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-slf4j-impl</artifactId>
+          <version>${jettyVersion}</version>
+      </dependency>
+      <dependency>
           <groupId>com.squareup.okhttp3</groupId>
           <artifactId>okhttp</artifactId>
           <version>4.10.0</version>
       </dependency>
+      <!--   Jetty Dependencies    -->
       <dependency>
           <groupId>org.eclipse.jetty</groupId>
-          <artifactId>jetty-xml</artifactId>
+          <artifactId>jetty-util</artifactId>
           <version>${jettyVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-server</artifactId>
+          <version>${jettyVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.eclipse.jetty.ee10</groupId>
+          <artifactId>jetty-ee10-webapp</artifactId>
+          <version>${jettyVersion}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-client</artifactId>
+          <version>${jettyVersion}</version>
+          <type>jar</type>
       </dependency>
 
   </dependencies>

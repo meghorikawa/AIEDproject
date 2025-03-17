@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="adding jetty">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/app.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +135,8 @@
       <workItem from="1741557487042" duration="11289000" />
       <workItem from="1741716336720" duration="941000" />
       <workItem from="1741719921820" duration="62109000" />
-      <workItem from="1741983815272" duration="6715000" />
+      <workItem from="1741983815272" duration="6751000" />
+      <workItem from="1742127940134" duration="5385000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -407,7 +402,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741893151292</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="adding jetty">
+      <option name="closed" value="true" />
+      <created>1742064115641</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1742064115641</updated>
+    </task>
+    <task id="LOCAL-00035" summary="adding jetty">
+      <option name="closed" value="true" />
+      <created>1742198731840</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1742198731840</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,6 +455,7 @@
     <MESSAGE value="RequestParams method" />
     <MESSAGE value="Update README.md" />
     <MESSAGE value="logger configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="logger configurations" />
+    <MESSAGE value="adding jetty" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding jetty" />
   </component>
 </project>
