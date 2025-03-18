@@ -204,8 +204,8 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
             String model_response = responseBody.string();
 
              if (model_response.isEmpty()){
-                 logger.error("Recieved empty response body from Groq API");
-                 return "{\"error\": \"Recieved empty response body from Groq API\"}";
+                 logger.error("Received empty response body from Groq API");
+                 return "{\"error\": \"Received empty response body from Groq API\"}";
              }
 
              //log response from LLM
