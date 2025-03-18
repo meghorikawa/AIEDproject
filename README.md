@@ -22,7 +22,7 @@ services:
 to build and then deploy the container, navigate to the project directory in your terminal and run the following command:
 
 ```yaml
-docker-compose up -d
+docker-compose up --build -d
 ```
 to stop the container run the following command:
 ```yaml
@@ -36,3 +36,13 @@ mvn clean package
 ```
 from here you will then redeploy the container as given in the instructions above.
 
+## Testing in Postman
+Test **POST** requests to the language model can be sent through the postman desktop app to the following url:
+
+```yaml
+http://localhost:8080/question/generation
+```
+Parameters for the request are input in JSON format through the body of the request in postman as shown in the screenshot below:
+![screenshot](./img/postman-screen.png)
+
+after hitting send, the raw model response should appear in the lower window. 
