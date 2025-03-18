@@ -46,3 +46,9 @@ Parameters for the request are input in JSON format through the body of the requ
 ![screenshot](./img/postman-screen.png)
 
 after hitting send, the raw model response should appear in the lower window. 
+
+## Error Logs
+For debugging error logs can be found in the console by typing the following command:
+```yaml
+docker-compose logs
+```
