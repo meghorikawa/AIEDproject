@@ -37,10 +37,6 @@ import static org.aiedwise2024.aiedproject.LMmessage.ROLE_USER;
         description = "For generating questions via an LLM for students to practice grammatical form",
         urlPatterns = GrammarFormQuestionGenerationServlet.URL_PATH
 )
-/*Set who can access - both students and teachers should be able to access this feature
- * within ares, however this is a prototype so no security is implemented*/
-//@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"USER_ACTIVATED", "TEACHER_ACTIVATED", "ADMIN"}))
-
 public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
     public static final String GROQ_SERVICE_PATH = "https://api.groq.com/openai/v1/chat/completions";
@@ -196,9 +192,16 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
                 resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to fetch data from Groq API");
                 return sendRequestReturnRawResponse(resp, groqAPIkey, requestBodyJson, numFallback -1, logger);
             }
-            assert response.body() != null;
-            String model_response =response.body().string();
-            //log response from LLM
+
+             ResponseBody responseBody=response.body();
+             if (responseBody == null) {
+                 logger.error("Response body is null");
+                 return "{\"error\": \"Response body is null\"}";
+             }
+
+            String model_response = responseBody.string();
+
+             //log response from LLM
             logger.info("Groq API Resp: {}", model_response);
             return model_response;
         }
