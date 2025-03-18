@@ -11,7 +11,7 @@ import java.util.List;
 public class RequestBodyData {
     String model = "deepseek-r1-distill-llama-70b";
     double temp = 0.0; //higher temperature introduces more randomness ares usese 0.0
-    String responseFormat = "{ \"type\": \"json_object\" }";
+    String responseFormat = "{ \"response_format\": \"json_object\" }";
 
     List<LMmessage> messages; // list of messages to include to model
 

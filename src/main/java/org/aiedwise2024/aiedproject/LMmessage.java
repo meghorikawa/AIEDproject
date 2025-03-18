@@ -18,7 +18,7 @@ public class LMmessage {
 
     public LMmessage(String role, String content) {
         //to control input values for role
-        if (!role.equals(ROLE_SYSTEM) || !role.equals(ROLE_ASSISTANT) || !role.equals(ROLE_USER)) {
+        if (!role.equals(ROLE_SYSTEM) && !role.equals(ROLE_ASSISTANT) && !role.equals(ROLE_USER)) {
             throw new IllegalArgumentException(role + " is not a valid role");
         }
 

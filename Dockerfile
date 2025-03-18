@@ -30,7 +30,7 @@ EXPOSE 8080
 COPY jetty-base /opt/jetty-base
 
 # Copy WAR file into Jetty webapps directory
-COPY target/AIEDproject-1.0-SNAPSHOT.war /opt/jetty-base/webapps/
+COPY target/AIEDproject-1.0-SNAPSHOT.war /opt/jetty-base/webapps/ROOT.war
 
 # Start Jetty
 CMD ["java", "-Djetty.base=/opt/jetty-base", "-jar", "/opt/jetty/start.jar"]

@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="adding jetty">
+    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="responsebody error logging">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jetty-base/resources/jetty-logging.properties" beforeDir="false" afterPath="$PROJECT_DIR$/jetty-base/resources/jetty-logging.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jetty-base/start.d/console-capture.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jetty-base/start.d/deploy.ini" beforeDir="false" afterPath="$PROJECT_DIR$/jetty-base/start.d/deploy.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jetty-base/start.d/http.ini" beforeDir="false" afterPath="$PROJECT_DIR$/jetty-base/start.d/http.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jetty-base/start.d/logging-jetty.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jetty-base/start.d/server.ini" beforeDir="false" afterPath="$PROJECT_DIR$/jetty-base/start.d/server.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/jetty-base/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/LMmessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/LMmessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/RequestBodyData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/RequestBodyData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +69,7 @@
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Jetty-Debug",
+    "git-widget-placeholder": "servlet-Debug",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/megu/Documents/Tübingen Universität/Edu Design with AI/Course Project/AIEDproject/jetty-base/start.d",
     "node.js.detected.package.eslint": "true",
@@ -126,8 +119,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.jetty: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml.jetty: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
@@ -153,7 +146,8 @@
       <workItem from="1741716336720" duration="941000" />
       <workItem from="1741719921820" duration="62109000" />
       <workItem from="1741983815272" duration="6751000" />
-      <workItem from="1742127940134" duration="27891000" />
+      <workItem from="1742127940134" duration="29018000" />
+      <workItem from="1742294807181" duration="5925000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -443,7 +437,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742200973322</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="docker and jetty settings">
+      <option name="closed" value="true" />
+      <created>1742245553771</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1742245553771</updated>
+    </task>
+    <task id="LOCAL-00038" summary="responsebody error logging">
+      <option name="closed" value="true" />
+      <created>1742295520732</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1742295520732</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,6 +491,8 @@
     <MESSAGE value="Update README.md" />
     <MESSAGE value="logger configurations" />
     <MESSAGE value="adding jetty" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding jetty" />
+    <MESSAGE value="docker and jetty settings" />
+    <MESSAGE value="responsebody error logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="responsebody error logging" />
   </component>
 </project>
