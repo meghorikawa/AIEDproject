@@ -1,0 +1,20 @@
+#powershell script to get questions in the terminal
+
+#request with example data
+$response = Invoke-RestMethod -Uri "http://localhost:8080/question/generation" -Method Post -ContentType "application/json" -Body '{"grammar_construct": "past tense", "num_ques": 5, "cefr_lvl": "A2"}'
+
+#gets content from the response
+$content = $response.choices[0].message.content
+
+# Getting PowerShell object from JSON
+$questions = $content | ConvertFrom-Json
+
+# Display the topic
+Write-Output "Construct: $($questions.topic)"
+
+# Writes questions and answers
+foreach ($question in $questions.questions) {
+    Write-Output "Question: $($question.question)"
+    Write-Output "Answer: $($question.answer)"
+    Write-Output "   "
+}
