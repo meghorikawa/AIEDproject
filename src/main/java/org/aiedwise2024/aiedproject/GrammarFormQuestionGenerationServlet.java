@@ -52,6 +52,9 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
     public static String PARAM_CONSTRUCT = "grammar_construct";
     public static String PARAM_NUM_OF_QUESTIONS = "num_ques";
     public static String PARAM_CEFR_LVL = "cefr_lvl"; //ideally pulled from construct description
+    public static String PARAM_NUM_NEGATIVE = "num_negative"; //number of negative questions
+    public static String PARAM_NUM_NEUTRAL = "num_neutral";
+    public static String PARAM_NUM_INTERROGATIVE = "num_interrogative";
 
     //logger instance
     private static final Logger logger = LoggerFactory.getLogger(GrammarFormQuestionGenerationServlet.class);
@@ -92,9 +95,13 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
         String par_construct = params.getGrammarConstruct();
         String par_num = params.getNumQuestions();
         String par_level = params.getCefrLevel();
+        String par_num_negative = params.getNumNegative();
+        String par_num_neutral = params.getNumNeutral();
+        String par_num_interrogative = params.getNumInterrogative();
+
 
         //handle cases for empty parameters or negative numbers
-        if (par_construct == null || par_num == null || par_level == null ) {
+        if (par_construct == null || par_num == null || par_level == null || par_num_negative == null || par_num_neutral == null || par_num_interrogative == null ) {
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             //error message must be returned as json format
@@ -112,7 +119,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
 
         try {
             //add the prompt builder here which will assemble the prompt
-            RequestBodyData body = getRequestBodyData(par_construct, par_level, par_num);
+            RequestBodyData body = getRequestBodyData(par_construct, par_level, par_num , par_num_negative, par_num_neutral, par_num_interrogative);
 
             //convert to JSON
             String requestBodyJson = new Gson().toJson(body);
@@ -139,8 +146,8 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
     }
 
     @NotNull
-    private RequestBodyData getRequestBodyData(String par_construct, String par_level, String par_num) {
-        String prompt = constructPrompt(par_construct, par_level, par_num);
+    private RequestBodyData getRequestBodyData(String par_construct, String par_level, String par_num, String par_num_negative , String par_num_neutral, String par_num_interrogative) {
+        String prompt = constructPrompt(par_construct, par_level, par_num, par_num_negative, par_num_neutral ,par_num_interrogative);
 
         //create list of messages to hold conversation messages i.e. system message, user message etc.
         List<LMmessage> messages = new ArrayList<>();
@@ -156,14 +163,11 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
     }
 
     //method for constructing prompt
-    private String constructPrompt(String construct, String level, String n){
-        return "You are an EFL teacher who teaches English to non-native school students " +
-                "aged 10-18. Generate " + n + " grammar questions in a fill-in-the-blank format " +
-                "with a CEFR level of " + level + " on the topic of " + construct +
-                ". Ensure that the questions provide students with opportunities to practice the topic " +
-                "from different perspectives and align with their level of knowledge. " +
-                "Your response should be in the following JSON format: { \"topic\": \"TOPIC_HERE\", " +
-                "\"questions\": [{\"question\": \"QUESTION_HERE\", \"answer\": \"ANSWER_HERE\"}] }";
+    private String constructPrompt(String construct, String level, String num_of_questions, String negative_sentences, String neutral_sentences, String interrogative_sentences){
+        return "Generate " + num_of_questions + " grammar questions in a fill-in-the-blank " +
+                "format on the topic of " + construct + " at the CEFR level " + level + ". " +
+                "Create exactly " + negative_sentences + " negative sentences, " + neutral_sentences + " neutral sentences, and " + interrogative_sentences + " interrogative sentences. " +
+                "Your response should be in JSON format with the following structure :{ \"level\": \"assigned_level\",\"topic\": \"assigned_grammatical_topic\",\"questions\" : [{ \"number_of_the_question\": \"question_number\",\"type_of_question\": \"negative or neutral or interrogative\", \"question\": \"question_text\", \"answer\": \"answer_text\"}] }";
     }
 
     // method for sending request to Groq and returning raw response

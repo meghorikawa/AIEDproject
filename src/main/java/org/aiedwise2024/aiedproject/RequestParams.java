@@ -4,6 +4,10 @@ public class RequestParams {
     private String grammar_construct;
     private String num_ques;
     private String cefr_lvl;
+    private String num_negative;
+    private String num_neutral;
+    private String num_interrogative;
+
 
     public String getGrammarConstruct() {
         return grammar_construct;
@@ -28,4 +32,29 @@ public class RequestParams {
     public void setCefrLevel(String cefr_lvl) {
         this.cefr_lvl = cefr_lvl;
     }
+
+    public String getNumNegative() {
+        return num_negative;
+    }
+
+    public void setNumNegative(String num_negative) {
+        this.num_negative = num_negative;
+    }
+
+    public String getNumNeutral() {
+        return num_neutral;
+    }
+
+    public void setNumNeutral(String num_neutral) {
+        this.num_neutral = num_neutral;
+    }
+
+    public String getNumInterrogative() {
+        return num_interrogative;
+    }
+
+    public void setNumInterrogative(String num_interrogative) {
+        this.num_interrogative = num_interrogative;
+    }
+    
 }
