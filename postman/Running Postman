@@ -1,0 +1,28 @@
+As our designed response type is JSON, the tests look differently to those in Ares.
+
+The tests in this collection check for:
+ - Response status, 200 is running correctly
+ - Whether response is valid JSON
+ - Whether question data is valid JSON
+ - Response contains 5 questions (as in prompt, can be changed, marked by comment)
+ - Each question has an answer
+
+
+
+To run the tests:
+
+API: PMAK-67dc032a1d5a8c000110d126-4d5f213eb223dd0279b2b06fa33235f478
+
+To run the tests through terminal node.js and newman is needed:
+npm install -g newman
+
+Command to run collection:
+newman run postman/collection.json
+
+You can test your prompts by changing values in:
+
+"body": {
+          "mode": "raw",
+          "raw": "{\"grammar_construct\": \"present simple\", \"num_ques\": 5, \"cefr_lvl\": \"A2\", \"num_negative\": 2, \"num_neutral\": 2, \"num_interrogative\": 1}"
+
+

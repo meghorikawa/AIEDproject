@@ -1,0 +1,151 @@
+{
+  "info": {
+    "_postman_id": "PMAK-67dc032a1d5a8c000110d126-4d5f213eb223dd0279b2b06fa33235f478",
+    "name": "API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Testing API for Question Generation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"grammar_construct\": \"present simple\", \"num_ques\": 5, \"cefr_lvl\": \"A2\", \"num_negative\": 2, \"num_neutral\": 2, \"num_interrogative\": 1}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/question/generation",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["question", "generation"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//Test for response status 200, API is working",
+              "pm.test(\"Response status is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "//Test for proper format",
+              "let responseJson;",
+              "try {",
+              "    responseJson = pm.response.json();",
+              "    pm.test(\"Response is valid JSON\", function () {",
+              "        pm.expect(responseJson).to.be.an(\"object\");",
+              "    });",
+              "} catch (e) {",
+              "    pm.test(\"Response is valid JSON\", function () {",
+              "        pm.expect.fail(\"Response is not valid JSON: \" + e.message);",
+              "    });",
+              "    return;",
+              "}",
+
+              "//Test headers Content-Type",
+              "pm.test(\"Content-Type is application/json\", function () {",
+              "    const contentType = pm.response.headers.get(\"Content-Type\");",
+              "    pm.expect(contentType).to.include(\"application/json\");",
+              "});",
+
+              "//Test response content",
+              "let contentRaw = responseJson.choices?.[0]?.message?.content;",
+              "if (!contentRaw) {",
+              "    pm.test(\"Response contains 'choices[0].message.content'\", function () {",
+              "        pm.expect.fail(\"Missing 'choices[0].message.content'\");",
+              "    });",
+              "    return;",
+              "}",
+
+              "//Test if response has proper format",
+              "let parsedContent;",
+              "try {",
+              "    parsedContent = JSON.parse(contentRaw);",
+              "    pm.test(\"Parsed content is valid JSON\", function () {",
+              "        pm.expect(parsedContent).to.be.an(\"object\");",
+              "    });",
+              "} catch (e) {",
+              "    pm.test(\"Parsed content is valid JSON\", function () {",
+              "        pm.expect.fail(\"Failed to parse inner JSON: \" + e.message);",
+              "    });",
+              "    return;",
+              "}",
+
+              "//Test content of reponse ",
+              "const questions = parsedContent.questions || [];",
+              "const requestBody = JSON.parse(pm.request.body.raw);",
+              "// Number of questions,",
+              "pm.test(`Response contains ${requestBody.num_ques} questions`, function () {",
+              "    pm.expect(questions.length).to.eql(requestBody.num_ques);",
+              "});",
+              "// if each question has an answer",
+              "pm.test(\"Each question has a question and answer\", function () {",
+              "    questions.forEach(q => {",
+              "        pm.expect(q).to.have.property(\"question\");",
+              "        pm.expect(q).to.have.property(\"answer\");",
+              "        pm.expect(q.question).to.be.a(\"string\").and.to.not.be.empty;",
+              "        pm.expect(q.answer).to.be.a(\"string\").and.to.not.be.empty;",
+              "    });",
+              "});",
+              "//Test for fails",
+              "(function simulateFailCases() {",
+              "    const failCases = [",
+              "        {",
+              "            name: \"Grammar construct not on the list\",",
+              "            body: { ...requestBody, grammar_construct: \"文法構成\" },",
+              "            expectStatus: 400",
+              "        },",
+              "        {",
+              "            name: \"Missing grammar construct\",",
+              "            body: { ...requestBody },",
+              "            mutate: b => { delete b.grammar_construct; },",
+              "            expectStatus: 400",
+              "        },",
+              "        {",
+              "            name: \"Empty request body\",",
+              "            body: {},",
+              "            expectStatus: 400",
+              "        },",
+              "        {",
+              "            name: \"Exceeding question limit\",",
+              "            body: { ...requestBody, num_ques: 1000 },",
+              "            expectStatus: 422",
+              "        },",
+              "        {",
+              "            name: \"Invalid data types\",",
+              "            body: { ...requestBody, num_ques: \"five\" },",
+              "            expectStatus: 400",
+              "        }",
+              "    ];",
+              "//",
+              "    failCases.forEach((testCase) => {",
+              "        let payload = JSON.stringify(testCase.body);",
+              "        if (testCase.mutate) {",
+              "            let clone = JSON.parse(payload);",
+              "            testCase.mutate(clone);",
+              "            payload = JSON.stringify(clone);",
+              "        }",
+              "//",
+              "        pm.test(`Fail Case [${testCase.name}] - Expect ${testCase.expectStatus} → Try manually with this body`, function () {",
+              "            console.log(`Fail Case: ${testCase.name}`);",
+              "            console.log(payload);",
+              "            pm.expect(true).to.eql(true);",
+              "        });",
+              "    });",
+              "})();"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}
