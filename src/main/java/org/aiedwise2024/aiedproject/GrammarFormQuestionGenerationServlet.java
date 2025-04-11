@@ -135,6 +135,7 @@ public class GrammarFormQuestionGenerationServlet extends HttpServlet {
                 logger.error("No response from Groq API or response is empty.");
                 resp.getWriter().write("{\"error\": \"No response from Groq API.\"}");
             }else {
+                resp.setContentType("application/json");
                 resp.getWriter().write(questions);
             }
 

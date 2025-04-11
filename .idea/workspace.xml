@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="update README with postman information">
+    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="delete template files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/aiedwise2024/aiedproject/GrammarFormQuestionGenerationServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +149,8 @@
       <workItem from="1743072529946" duration="651000" />
       <workItem from="1743524448979" duration="1871000" />
       <workItem from="1744136647741" duration="2723000" />
+      <workItem from="1744201843337" duration="778000" />
+      <workItem from="1744376515758" duration="3198000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -493,7 +496,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742306097450</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="delete template files">
+      <option name="closed" value="true" />
+      <created>1744201954245</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1744201954245</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,7 +522,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit" />
     <MESSAGE value="fixing typos" />
     <MESSAGE value="adding Dockerfile" />
     <MESSAGE value="docker-compose.yml" />
@@ -536,6 +546,7 @@
     <MESSAGE value="responsebody error logging" />
     <MESSAGE value="fixing spelling errors" />
     <MESSAGE value="update README with postman information" />
-    <option name="LAST_COMMIT_MESSAGE" value="update README with postman information" />
+    <MESSAGE value="delete template files" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete template files" />
   </component>
 </project>
