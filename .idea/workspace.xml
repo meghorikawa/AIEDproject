@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="final postman test" />
+    <list default="true" id="af5dbe50-e44b-45ef-b14a-cac5d2642960" name="Changes" comment="adding paper" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -148,6 +148,7 @@
       <workItem from="1744136647741" duration="2723000" />
       <workItem from="1744201843337" duration="778000" />
       <workItem from="1744376515758" duration="4117000" />
+      <workItem from="1744554280294" duration="76000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -509,7 +510,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744395212600</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="adding paper">
+      <option name="closed" value="true" />
+      <created>1744554349174</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1744554349174</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,7 +536,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding Dockerfile" />
     <MESSAGE value="docker-compose.yml" />
     <MESSAGE value="updated pom to JDK17" />
     <MESSAGE value="update dockerfile" />
@@ -552,6 +560,7 @@
     <MESSAGE value="update README with postman information" />
     <MESSAGE value="delete template files" />
     <MESSAGE value="final postman test" />
-    <option name="LAST_COMMIT_MESSAGE" value="final postman test" />
+    <MESSAGE value="adding paper" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding paper" />
   </component>
 </project>

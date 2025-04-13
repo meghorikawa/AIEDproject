@@ -36,7 +36,7 @@ mvn clean package
 ```
 from here you will then redeploy the container as given in the instructions above.
 
-## Testing in Postman
+## Testing in Postman Desktop App
 Test **POST** requests to the language model can be sent through the postman desktop app to the following url:
 
 ```yaml
@@ -56,6 +56,22 @@ Parameters for the request are input in JSON format through the body of the requ
 }
 
 after hitting send, the raw model response should appear in the lower window. 
+
+## Postman Tests in console
+To run the tests through terminal node.js and newman is needed:
+npm install -g newman
+
+Command to run collection:
+newman run postman/collection.json
+
+You can test your prompts by changing values in:
+```yaml
+"body": {
+"mode": "raw",
+"raw": "{\"grammar_construct\": \"present simple\", \"num_ques\": 5, \"cefr_lvl\": \"A2\", \"num_negative\": 2, \"num_neutral\": 2, \"num_interrogative\": 1}"
+```
+
+
 
 ## Error Logs
 For debugging error logs can be found in the console by typing the following command:
